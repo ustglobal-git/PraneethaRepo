@@ -1,0 +1,135 @@
+import './App.css';
+import React,{useState} from 'react';
+
+function App() {
+  const [name,setName] = useState("Venugopal");
+  return (
+    <div className="App">
+      <h1>Hello World</h1>
+      <h1>{name}</h1>
+      <input type="button" value="Click Me" onClick={()=>setName("Priya Bhavani")}/>
+    </div>
+  );
+}
+
+export default App;
+====================
+import './App.css';
+import React,{useState} from 'react';
+
+function App() {
+  const [count, setCount] = useState(0);
+  return (
+    <div className="App">
+      <h1>Hello World</h1>
+      <h1>Value {count}</h1>
+      <input type="button" value="Click Me" onClick={()=>setCount(count+1)}/>
+    </div>
+  );
+}
+
+export default App;
+==================
+import './App.css';
+import React,{useState} from 'react';
+
+function App() {
+  const [user, setUser] = useState("");
+  const changevalue = e =>{
+    setUser(e.target.value);
+  }
+  return (
+    <div className="App">
+      <input type="text" placeholder="Your Name " value={user} name="user" onChange={changevalue} />
+      <br />
+      Changed Value is : {user}
+      
+    </div>
+  );
+}
+
+export default App;
+===================
+import './App.css';
+import React,{useState} from 'react';
+
+function App() {
+ const arr=["ABC", "BCA", "CBA", "BAC", "ACB"];
+  return (
+    <div className="App">
+      {
+        arr.map(
+          (val, ind) => <li key={ind}>{val}</li>
+        )
+      }      
+    </div>
+  );
+}
+
+export default App;
+=========================
+import './App.css';
+import React,{useState} from 'react';
+
+function App() {
+const arr=[
+  {
+    id:101,
+    title:"Priya"
+  },
+  {
+    id:102,
+    title:"Venugopal"
+  }
+  ];
+			JSON
+  return (
+    <div className="App">
+      {
+        arr.map(
+          (val) => <li key={val.id}>{val.title}</li>
+        )
+      }      
+    </div>
+  );
+}
+
+export default App;
+===================
+import './App.css';
+import React,{useState} from 'react';
+
+const App = () =>{
+  const [data, setData] = useState({
+    username:'',
+    password:''
+  })
+
+  const  {username, password} = data;
+
+  const changeValues = e =>{
+    setData({...data,[e.target.name]:[e.target.value]});
+  }
+  
+  const submtForm = e =>{
+    e.preventDefault();
+    //alert(data.username + "\t" + data.password);
+    console.log(data);
+  }
+  return (
+    <div>
+      <center>
+        <form onSubmit={submtForm}>
+          <input type="text" name="username" value={username} onChange={changeValues}/>
+          <br />
+          <input type="password" name="password" value={password} onChange={changeValues}/>
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
+        <h1>{data.username}</h1>
+      </center>
+    </div>
+  )
+}
+
+export default App;
